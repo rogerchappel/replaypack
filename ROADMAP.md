@@ -1,38 +1,24 @@
 # Roadmap
 
-This roadmap describes intended direction, not a binding delivery promise.
-Review it regularly and update it as the project learns from users,
-contributors, and implementation constraints.
+## v0.1 MVP
 
-## Now
+- Deterministic JSONL transcript packs.
+- Command recording with stdout/stderr chunks.
+- Fixture sha256 hashing.
+- Exact output and exit-code verification.
+- Markdown rendering for docs and release notes.
+- Local smoke script and fixture-backed tests.
 
-- Define the smallest useful project scope.
-- Keep repository setup, documentation, and verification easy for contributors
-  to follow.
-- Ship small, reviewable improvements.
+## v0.2 Candidate
 
-## Next
-
-- Add the next capabilities that directly support the project's primary users.
-- Improve tests, docs, and examples around the most used workflows.
-- Reduce setup friction discovered during early use.
+- Glob support for fixture sets.
+- CLI flags for `contains` and `regex` matchers.
+- Human-readable diff output for verification failures.
+- More renderer templates.
 
 ## Later
 
-- Consider larger features after the core workflow is stable.
-- Add automation only where it removes repeated maintainer work.
-- Revisit packaging, deployment, or integration options based on real demand.
-
-## Not Planned
-
-- Unrelated platform rewrites without a clear migration path.
-- Mandatory dependencies on a single ecosystem unless the project requires it.
-- Public release dates before maintainers are ready to commit to them.
-
-## Roadmap Review
-
-Before each major or meaningful minor release:
-
-- Move completed user-visible work into `CHANGELOG.md`.
-- Remove stale commitments.
-- Promote only the next reviewable set of work into `Now`.
+- CI reporter outputs such as JUnit or SARIF.
+- Pack schema export with JSON Schema.
+- Optional stdin capture from files.
+- Signed packs if maintainers need provenance guarantees.
