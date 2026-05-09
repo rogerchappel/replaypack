@@ -1,0 +1,20 @@
+{
+  "name": "replaypack",
+  "version": 1,
+  "localFirst": true,
+  "verify": [
+    "npm test",
+    "npm run check",
+    "npm run build",
+    "npm run smoke",
+    "bash scripts/validate.sh"
+  ],
+  "artifacts": [
+    "examples/basic.replaypack.jsonl",
+    "examples/basic.md"
+  ],
+  "safety": {
+    "externalMutationDefault": false,
+    "secretPolicy": "Use env allowlists and redaction rules; never record broad process environments."
+  }
+}
