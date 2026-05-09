@@ -1,58 +1,37 @@
 # Security Policy
 
-## Supported Versions
+ReplayPack is local-first tooling for command transcript evidence. Its main risks are accidental secret capture and misleading verification artifacts.
 
-Replace this section with the supported versions for `../replaypack`.
+## Supported versions
 
-Example:
+Security fixes target the latest `main` branch until formal releases begin.
 
-```md
-| Version | Supported |
-| --- | --- |
-| .x | Yes |
-| < .0 | No |
+## Reporting a vulnerability
+
+Please open a private report with the maintainer or contact Roger Chappel before publishing details. Include:
+
+- affected command or pack behavior
+- minimal reproduction steps
+- whether secret exposure is involved
+- suggested fix if known
+
+## Privacy and secret handling
+
+ReplayPack does **not** send packs anywhere. Still, packs can contain stdout/stderr from your commands, so treat them as sensitive until reviewed.
+
+Use:
+
+```bash
+replaypack record --name safe --redact-env API_TOKEN -- your-command
 ```
 
-If the project does not publish versioned releases yet, say that clearly.
+Guidelines:
 
-## Reporting a Vulnerability
+- Avoid recording commands that print credentials, cookies, tokens, or customer data.
+- Use `--env` only for values that are safe to disclose in local evidence.
+- Use `--redact-env` for any secret-like value that could appear in output.
+- Review generated `.replaypack.jsonl` files before committing them.
 
-Please do not report suspected vulnerabilities in public issues, pull requests, or discussions.
+## Non-goals
 
-Ask maintainers for the private security reporting path before sharing details.
-
-If no private reporting path exists yet, ask maintainers through public project channels for a private reporting path. Do not include exploit details, secrets, personal data, or sensitive technical details in public messages.
-
-## What to Include
-
-When a private reporting path is available, include:
-
-- A clear description of the issue.
-- Affected versions, files, packages, workflows, or configuration.
-- Steps to reproduce, proof of concept, or attack scenario when safe to share.
-- Potential impact.
-- Suggested mitigation, if known.
-
-## Response Expectations
-
-Maintainers review good-faith reports as capacity allows.
-
-Do not imply paid support, guaranteed response times, guaranteed fixes, or service-level agreements unless `../replaypack` explicitly provides them.
-
-## Scope
-
-In scope:
-
-- Vulnerabilities in ../replaypack.
-- Insecure default configuration shipped by this project.
-- CI, release, or dependency guidance maintained by this project.
-
-Out of scope:
-
-- General support requests.
-- Requests for guaranteed maintenance timelines.
-- Issues in unrelated downstream projects.
-
-## Disclosure
-
-Coordinate disclosure with maintainers before publishing vulnerability details.
+ReplayPack is not a sandbox. It records commands you choose to run; it does not make unsafe commands safe.
