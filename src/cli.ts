@@ -3,6 +3,7 @@ import { Command, Option } from 'commander';
 import { recordPack } from './record.js';
 import { renderPack } from './render.js';
 import { verifyPack } from './verify.js';
+import { replaypackSchemaSummary } from './schema.js';
 
 const program = new Command();
 
@@ -49,7 +50,7 @@ program.command('render')
 program.command('schema')
   .description('Print a compact description of the v1 JSONL event schema.')
   .action(() => {
-    console.log(JSON.stringify({ version: 1, events: ['header', 'stream', 'result'], extension: '.replaypack.jsonl' }, null, 2));
+    console.log(JSON.stringify(replaypackSchemaSummary, null, 2));
   });
 
 await program.parseAsync(process.argv);

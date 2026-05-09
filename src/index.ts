@@ -7,3 +7,4 @@ export * from './redact.js';
 export * from './render.js';
 export * from './types.js';
 export * from './verify.js';
+export * from './schema.js';
