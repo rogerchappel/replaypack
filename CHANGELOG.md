@@ -1,21 +1,13 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
-
-This project follows the [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
-format and uses semantic versioning when versioned releases are published.
-
-## [Unreleased]
+## 0.1.0 - unreleased
 
 ### Added
 
-- Initial project setup.
-
-## Release Links
-
-- Unreleased:
-  `https://github.com/rogerchappel/replaypack/compare/...HEAD`
-- Latest release:
-  `https://github.com/rogerchappel/replaypack/releases/latest`
-
-Replace placeholder links once the first release tag exists.
+- StackForge-scaffolded TypeScript CLI package.
+- `record`, `verify`, `render`, and `schema` commands.
+- JSONL pack parser/writer and typed event model.
+- Redaction helpers for common secret assignments and named env values.
+- Fixture hashing and comparison.
+- Markdown renderer and example pack.
+- Fixture-backed unit tests plus end-to-end smoke script.
