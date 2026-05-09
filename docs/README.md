@@ -1,13 +1,8 @@
-# ../replaypack Documentation
+# ReplayPack docs
 
-This directory holds project documentation.
-
-## Contents
-
-- [Contributing guide](../CONTRIBUTING.md)
-- [Security policy](../SECURITY.md)
-- [Agent instructions](../AGENTS.md)
-
-## Additional docs
-
-For a hosted documentation site, see the `docs-site/` directory if present.
+- [PRD](PRD.md) — product intent and acceptance criteria.
+- [TASKS](TASKS.md) — MVP checklist and near-term follow-ups.
+- [ORCHESTRATION](ORCHESTRATION.md) — local verification and agent workflow.
+- [FORMAT](FORMAT.md) — JSONL event format notes.
+- [SAFETY](SAFETY.md) — safe recording checklist.
+- [orchestration.json](orchestration.json) — machine-readable verification plan.
