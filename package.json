@@ -13,8 +13,11 @@
   "files": [
     "dist",
     "examples",
+    "docs",
+    "schemas",
     "README.md",
-    "docs"
+    "LICENSE",
+    "SECURITY.md"
   ],
   "scripts": {
     "build": "tsc",
@@ -22,7 +25,8 @@
     "test": "npm run build && node --test dist/**/*.test.js",
     "smoke": "npm run build && bash scripts/smoke.sh",
     "package:smoke": "npm pack --dry-run",
-    "release:check": "npm run check && npm test && npm run smoke && npm run package:smoke"
+    "release:check": "npm run check && npm test && npm run smoke && npm run package:smoke",
+    "typecheck": "tsc --noEmit"
   },
   "keywords": [
     "cli",
