@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://replaypack.dev/schemas/replaypack-v1.json",
+  "title": "ReplayPack v1 JSONL event",
+  "oneOf": [
+    { "$ref": "#/$defs/header" },
+    { "$ref": "#/$defs/stream" },
+    { "$ref": "#/$defs/result" }
+  ],
+  "$defs": {
+    "header": {
+      "type": "object",
+      "required": ["type", "version", "name", "createdAt", "cwd", "command", "env", "fixtures", "redactions", "schema"],
+      "properties": {
+        "type": { "const": "header" },
+        "version": { "const": 1 },
+        "name": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "cwd": { "type": "string" },
+        "command": { "type": "array", "items": { "type": "string" } },
+        "env": { "type": "object", "additionalProperties": { "type": "string" } },
+        "fixtures": { "type": "array", "items": { "$ref": "#/$defs/fixture" } },
+        "redactions": { "type": "array", "items": { "type": "string" } },
+        "schema": { "const": "https://replaypack.dev/schemas/replaypack-v1.json" }
+      },
+      "additionalProperties": false
+    },
+    "stream": {
+      "type": "object",
+      "required": ["type", "stream", "chunk", "index"],
+      "properties": {
+        "type": { "const": "stream" },
+        "stream": { "enum": ["stdout", "stderr"] },
+        "chunk": { "type": "string" },
+        "index": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "result": {
+      "type": "object",
+      "required": ["type", "exitCode", "signal", "durationMs", "stdout", "stderr", "matchers"],
+      "properties": {
+        "type": { "const": "result" },
+        "exitCode": { "type": ["integer", "null"] },
+        "signal": { "type": ["string", "null"] },
+        "durationMs": { "type": "integer", "minimum": 0 },
+        "stdout": { "type": "string" },
+        "stderr": { "type": "string" },
+        "matchers": { "type": "object" }
+      },
+      "additionalProperties": true
+    },
+    "fixture": {
+      "type": "object",
+      "required": ["path", "algorithm", "hash", "bytes"],
+      "properties": {
+        "path": { "type": "string" },
+        "algorithm": { "const": "sha256" },
+        "hash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "bytes": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    }
+  }
+}
