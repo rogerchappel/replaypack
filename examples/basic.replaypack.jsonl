@@ -1,0 +1,4 @@
+{"type":"header","version":1,"name":"basic","createdAt":"1970-01-01T00:00:00.000Z","cwd":".","command":["node","tests/fixtures/hello.js"],"env":{},"fixtures":[{"path":"tests/fixtures/input.txt","algorithm":"sha256","hash":"c90b5a8d0d6cc502266b53f3b2b03bd97b35679f770f94b31563b468bda63543","bytes":11}],"redactions":["common-secret-assignments"],"schema":"https://replaypack.dev/schemas/replaypack-v1.json"}
+{"type":"stream","stream":"stdout","chunk":"hello replaypack\n","index":0}
+{"type":"stream","stream":"stderr","chunk":"fixture stderr line\n","index":1}
+{"type":"result","exitCode":0,"signal":null,"durationMs":43,"stdout":"hello replaypack\n","stderr":"fixture stderr line\n","matchers":{"stdout":{"kind":"exact","value":"hello replaypack\n"},"stderr":{"kind":"exact","value":"fixture stderr line\n"},"exitCode":0}}
