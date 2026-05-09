@@ -1,79 +1,46 @@
-# Contributing
+# Contributing to ReplayPack
 
-Thanks for helping improve `../replaypack`.
+Thanks for helping make CLI evidence less hand-wavy.
 
-This project values small, reviewable contributions with clear verification.
+## Local setup
 
-## Issues
-
-Before opening an issue:
-
-- Search existing issues.
-- Confirm the issue applies to `../replaypack`.
-- Include enough context for maintainers to understand or reproduce the request.
-
-Bug reports should include:
-
-- What happened.
-- What you expected.
-- Steps to reproduce.
-- Relevant logs, screenshots, or files.
-- The smallest verification step that demonstrates the issue.
-
-Feature requests should include:
-
-- The use case.
-- Why the current project does not solve it.
-- Risks or compatibility concerns.
-- Suggested files or behavior that may need to change.
-
-## Pull Requests
-
-Pull requests should:
-
-- Focus on one reviewable intent.
-- Use a branch.
-- Follow Conventional Commits.
-- Include tests or verification appropriate to the change.
-- Update documentation when behavior or usage changes.
-- Avoid unrelated formatting or dependency churn.
-- Avoid secrets, private contact details, and project-specific sensitive information.
-
-## Review Pack
-
-Use this format for meaningful changes:
-
-```md
-## Review Pack
-Repo:
-Branch:
-PR:
-Task:
-Status: done / blocked / needs review
-Summary:
-Commits:
-Files changed:
-Verification:
-Risk level:
-Rollback plan:
-Human decision needed:
-Next recommended task:
+```bash
+npm install
+npm run build
+npm test
+npm run smoke
 ```
 
-## Verification
+## Development rules
 
-Every contribution should include verification.
+- Keep the pack format deterministic and diffable.
+- Prefer small, boring JSONL events over clever binary formats.
+- Add fixture-backed tests for parser, verifier, renderer, and redaction changes.
+- Do not add network calls to record/verify/render paths.
+- Do not broaden environment capture; explicit allowlists only.
 
-Examples:
+## Before sending changes
 
-- Documentation: inspect rendered Markdown or review the diff.
-- Tests: run the targeted test command.
-- Types: run the project typecheck.
-- Build: run the smallest build command that covers the change.
-- Manual QA: provide exact steps and observed result.
+Run:
 
-If verification cannot be run, explain why and provide the exact command maintainers should run.
+```bash
+npm test
+npm run check
+npm run build
+npm run smoke
+bash scripts/validate.sh
+```
 
-## Maintainer Review
+If examples change intentionally, refresh `examples/basic.replaypack.jsonl` and `examples/basic.md` in the same commit.
 
-Maintainers may request narrower scope, clearer verification, additional tests, or safer defaults before merging.
+## Commit style
+
+Use short conventional-ish subjects such as:
+
+- `feat: add fixture globbing`
+- `test: cover regex matchers`
+- `docs: explain pack format`
+
+## Security-sensitive changes
+
+Anything that affects redaction, env capture, command execution, or pack rendering should be reviewed with extra care. See `SECURITY.md`.
