@@ -22,30 +22,30 @@ program.command('record')
   .allowUnknownOption(true)
   .allowExcessArguments(true)
   .argument('[cmd...]', 'Command to record. Prefer: replaypack record --name demo -- node script.js')
-  .action(async (cmd: string[], options: { name: string; output?: string; fixture: string[]; env: string[]; redactEnv: string[] }) => {
+  .action(async (cmd: string[], options: { name: string; output?: string; fixture: string[]; env: string[]; redactEnv: string[] }) => runCli(async () => {
     const command = stripCommandSeparator(cmd);
     const result = await recordPack({ name: options.name, output: options.output, fixtures: options.fixture, envAllow: options.env, redactEnv: options.redactEnv, command });
     console.error(`replaypack wrote ${result.output} (${result.eventCount} events, exit ${result.exitCode})`);
     process.exitCode = result.exitCode ?? 1;
-  });
+  }));
 
 program.command('verify')
   .description('Verify fixture hashes and stored transcript matchers.')
   .argument('<pack>', 'ReplayPack JSONL file')
   .option('--rerun', 'Re-run the recorded command before checking output matchers')
-  .action(async (pack: string, options: { rerun?: boolean }) => {
+  .action(async (pack: string, options: { rerun?: boolean }) => runCli(async () => {
     const report = await verifyPack({ pack, rerun: Boolean(options.rerun) });
     console.log(JSON.stringify(report, null, 2));
     if (!report.ok) process.exitCode = 1;
-  });
+  }));
 
 program.command('render')
   .description('Render a replay pack into README-friendly evidence.')
   .argument('<pack>', 'ReplayPack JSONL file')
   .addOption(new Option('--format <format>', 'Output format').choices(['markdown', 'json']).default('markdown'))
-  .action(async (pack: string, options: { format: 'markdown' | 'json' }) => {
+  .action(async (pack: string, options: { format: 'markdown' | 'json' }) => runCli(async () => {
     process.stdout.write(await renderPack({ pack, format: options.format }));
-  });
+  }));
 
 program.command('schema')
   .description('Print a compact description of the v1 JSONL event schema.')
@@ -61,4 +61,13 @@ function collect(value: string, previous: string[]): string[] {
 
 function stripCommandSeparator(parts: string[]): string[] {
   return parts[0] === '--' ? parts.slice(1) : parts;
+}
+
+async function runCli(action: () => Promise<void>): Promise<void> {
+  try {
+    await action();
+  } catch (error) {
+    console.error(error instanceof Error ? error.message : String(error));
+    process.exitCode = 1;
+  }
 }
