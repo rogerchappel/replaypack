@@ -14,7 +14,13 @@ Short, grounded post drafts for ReplayPack.
 
 5. Demo idea: run `node tests/fixtures/hello.js`, track `tests/fixtures/input.txt`, and render the result into a README-ready Markdown snippet.
 
-## Suggested CTA
+6. Release notes are stronger with receipts. `replaypack` records the command, fixture hashes, output chunks, exit status, and matchers into a diffable JSONL pack.
+
+7. `replaypack` is for small proof-oriented CLI smokes: record once, verify later, render Markdown for release notes or agent handoffs.
+
+8. Not terminal cinema. A transcript pack you can diff, verify, and cite next to the example it supports.
+
+## Suggested CTAs
 
 Try the local quickstart:
 
@@ -23,4 +29,11 @@ npm install
 npm run build
 node dist/cli.js verify examples/basic.replaypack.jsonl
 node dist/cli.js render examples/basic.replaypack.jsonl --format markdown
+```
+
+Run the release-note evidence demo:
+
+```sh
+npm run build
+bash examples/release-note-demo.sh
 ```

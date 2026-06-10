@@ -68,6 +68,17 @@ See [`examples/basic.replaypack.jsonl`](examples/basic.replaypack.jsonl) and [`e
 
 For a step-by-step walkthrough, see [`docs/tutorials/verify-readme-example.md`](docs/tutorials/verify-readme-example.md). For a shorter demo script outline, see [`examples/readme-proof.md`](examples/readme-proof.md).
 
+## Runnable demo
+
+Build the CLI and run the release-note evidence demo:
+
+```bash
+npm run build
+bash examples/release-note-demo.sh
+```
+
+The script records a small command, hashes `examples/release-note-demo/release-note.md`, verifies the generated pack, and renders Markdown for review.
+
 ## Safety model
 
 ReplayPack is local-first by default:
