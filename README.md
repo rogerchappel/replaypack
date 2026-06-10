@@ -66,6 +66,17 @@ Markdown output is designed for READMEs, release notes, and agent handoffs.
 
 See [`examples/basic.replaypack.jsonl`](examples/basic.replaypack.jsonl) and [`examples/basic.md`](examples/basic.md).
 
+## Runnable demo
+
+Build the CLI and run the release-note evidence demo:
+
+```bash
+npm run build
+bash examples/release-note-demo.sh
+```
+
+The script records a small command, hashes `examples/release-note-demo/release-note.md`, verifies the generated pack, and renders Markdown for review.
+
 ## Safety model
 
 ReplayPack is local-first by default:
