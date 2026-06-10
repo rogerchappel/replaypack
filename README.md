@@ -66,6 +66,8 @@ Markdown output is designed for READMEs, release notes, and agent handoffs.
 
 See [`examples/basic.replaypack.jsonl`](examples/basic.replaypack.jsonl) and [`examples/basic.md`](examples/basic.md).
 
+For a step-by-step walkthrough, see [`docs/tutorials/verify-readme-example.md`](docs/tutorials/verify-readme-example.md). For a shorter demo script outline, see [`examples/readme-proof.md`](examples/readme-proof.md).
+
 ## Safety model
 
 ReplayPack is local-first by default:
