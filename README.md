@@ -105,3 +105,14 @@ bash scripts/validate.sh
 ## Status
 
 MVP: usable and intentionally small. Next up: glob fixtures, CLI-configurable non-exact matchers, and CI reporter formats.
+
+## Release readiness
+
+Run the same checks that CI uses before opening a release PR:
+
+```sh
+npm run release:readiness
+npm run release:check
+```
+
+`release:readiness` validates repository metadata, the package files allowlist, package smoke coverage, and CI placeholder cleanup. `release:check` runs the project build, test, smoke, and package dry-run checks where configured.

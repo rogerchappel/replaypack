@@ -28,7 +28,8 @@
     "smoke": "npm run build && bash scripts/smoke.sh",
     "package:smoke": "npm pack --dry-run",
     "release:check": "npm run check && npm test && npm run smoke && npm run package:smoke",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "release:readiness": "node scripts/validate-release-readiness.mjs"
   },
   "keywords": [
     "cli",
