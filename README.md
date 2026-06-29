@@ -79,6 +79,15 @@ bash examples/release-note-demo.sh
 
 The script records a small command, hashes `examples/release-note-demo/release-note.md`, verifies the generated pack, and renders Markdown for review.
 
+For a CI-smoke flavored example that also exercises `verify --rerun`, run:
+
+```bash
+npm run build
+bash examples/ci-smoke-demo.sh
+```
+
+The brief in [`docs/promo/ci-smoke-video-brief.md`](docs/promo/ci-smoke-video-brief.md) maps that script to a short product demo.
+
 ## Safety model
 
 ReplayPack is local-first by default:
