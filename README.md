@@ -124,4 +124,4 @@ npm run release:readiness
 npm run release:check
 ```
 
-`release:readiness` validates repository metadata, the package files allowlist, package smoke coverage, and CI placeholder cleanup. `release:check` runs the project build, test, smoke, and package dry-run checks where configured.
+`release:readiness` validates repository metadata, the package files allowlist, package smoke coverage, and CI placeholder cleanup. `release:check` runs the project build, test, smoke, and package dry-run checks where configured. The package smoke fails if the CLI, library entrypoint, example transcript, schema, or support docs would be missing from the published tarball.
