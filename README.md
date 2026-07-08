@@ -108,8 +108,13 @@ npm test
 npm run check
 npm run build
 npm run smoke
+npm run package:smoke
 bash scripts/validate.sh
 ```
+
+`npm run package:smoke` builds the project, checks the npm pack allowlist, installs
+the generated tarball into a temporary app, and exercises the packaged
+`replaypack` binary against a small record/verify/render flow.
 
 ## Status
 
